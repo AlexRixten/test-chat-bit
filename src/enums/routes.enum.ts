@@ -1,3 +1,4 @@
 export const enum ERoutes {
-	Chat = '/',
+	Main = '/',
+	Chat = '/test-chat-bit',
 }
