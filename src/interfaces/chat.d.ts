@@ -12,14 +12,6 @@ export interface IMessage {
 	message: string;
 }
 
-export interface ISendMessageThunkParams {
-	requestData: ISendMessageReq;
-}
-
-export interface ISendMessageReq {
-	message: string;
-}
-
 export interface ISetChatMessagesAction {
 	type: EChatActions.SetMessagesChat;
 	payload: IMessage[] | null;

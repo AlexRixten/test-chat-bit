@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { processNextChunk } from '../../../utils/processNextChunk.ts';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../store/hooks.ts';
 import { setChatMessagesAction } from '../../../store/actions/chat.ts';
-import { IMessage } from '../../../interfaces/chat';
-import { EMessageAuthor } from '../../../enums/messages.enum.ts';
-import { useSelector } from 'react-redux';
 import { messagesSelector } from '../../../store/selectors/chatSelectors.ts';
-import './InputMessage.scss';
 import { Preloader } from '../../../components/preloader';
+import { EMessageAuthor } from '../../../enums/messages.enum.ts';
+import { IMessage } from '../../../interfaces/chat';
+import { processNextChunk } from '../../../utils/processNextChunk.ts';
+import './InputMessage.scss';
 
 interface IProps {
 	setChunks: (srt: (prevChunks: string) => string) => void;
@@ -26,7 +26,7 @@ export const InputMessage = ({ setChunks }: IProps) => {
 		setIsLoading(true);
 		createMeMessage();
 		try {
-			const response = await fetch(`${import.meta.env.VITE_APP_BIT_API}/chat/send-message`, {
+			const response = await fetch(`http://185.46.8.130/api/v1/chat/send-message`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

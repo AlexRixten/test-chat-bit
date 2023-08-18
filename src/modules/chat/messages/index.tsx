@@ -1,7 +1,7 @@
 import { IMessage } from '../../../interfaces/chat';
 import { EMessageAuthor } from '../../../enums/messages.enum.ts';
-import avatarBot from '../../../assets/bot.svg';
 import './Messages.scss';
+import avatarBot from '../../../assets/bot.svg';
 
 interface IProps {
 	messages: IMessage[] | null;
