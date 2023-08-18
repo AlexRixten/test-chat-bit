@@ -35,6 +35,27 @@ export const InputMessage = ({ setChunks }: IProps) => {
 				body: JSON.stringify({ message: value }),
 			});
 
+			/*
+			TODO: chunks прилетают слышком быстро, и очень большим скопом, и прервать запрос через new AbortController()
+			 тоже не получалось, ибо чанки приходили уже после успешного ответа, поэтому и была написана рекурсивная
+			  функция для обхода ответа и вывода по буквам, но в таком случае прервать запрос не получается
+			 PS. Буду очень признателен, если внесете небольшие правки или просто отпишитесь с объяснением, что я не так делал)
+			const reader = response.body!.pipeThrough(new TextDecoderStream('utf-8')).getReader();
+			const { done, value: valueChunk } = await reader.read();
+			while (true) {
+				if (done) {
+					console.log('end');
+					return;
+				}
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+
+				const arrayChunks = valueChunk.match(/\{.*?\}/g);
+				const chunkStr = arrayChunks?.map((chunk) => JSON.parse(chunk).value).join('');
+				console.log('chunkStr', chunkStr);
+			}
+
+			*/
+
 			const reader = response.body!.getReader();
 			const accumulatedData = '';
 			await processNextChunk({ reader, accumulatedData, setChunks });
@@ -58,12 +79,20 @@ export const InputMessage = ({ setChunks }: IProps) => {
 	};
 
 	const changeValueHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+		console.log(event);
 		setValue(event.target.value);
 	};
 
 	const onEnterPress = async (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-		if (event.keyCode == 13 && !event.shiftKey) {
-			await onSubmitHandler();
+		switch (true) {
+			case event.keyCode === 13 && event.shiftKey:
+				break;
+			case event.keyCode === 13:
+				event.preventDefault();
+				await onSubmitHandler();
+				break;
+			default:
+				return;
 		}
 	};
 

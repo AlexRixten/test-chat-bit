@@ -16,7 +16,7 @@ const Messages = ({ messages }: IProps) => {
 						if (author === EMessageAuthor.Me) {
 							return (
 								<div className="message _me" key={id}>
-									<div className="message_text _me">{message}</div>
+									<pre className="message_text _me">{message}</pre>
 									<div className="message_avatar">
 										<img src={avatar} alt="" />
 									</div>

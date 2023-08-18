@@ -18,9 +18,7 @@ export const processNextChunk = async ({ reader, accumulatedData, setChunks }: I
 			console.log('chunkObject', chunkObject);
 
 			setChunks((prevChunks) => prevChunks + chunkObject.value);
-			//dispatch
 		} else {
-			//dispatch
 			setChunks((_) => '');
 			return;
 		}
