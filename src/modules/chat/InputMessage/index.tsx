@@ -79,7 +79,6 @@ export const InputMessage = ({ setChunks }: IProps) => {
 	};
 
 	const changeValueHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-		console.log(event);
 		setValue(event.target.value);
 	};
 
