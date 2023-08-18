@@ -1,0 +1,53 @@
+.create-message {
+  position: relative;
+  width: 100%;
+  padding: 20px 23px 20px 28px;
+
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0 2px 31px 13px rgba(10, 63, 142, 0.08);
+
+  .message_input {
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #CED0D6;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 155%;
+    resize: none;
+    padding-right: 50px;
+    &::placeholder {
+      color: #CED0D6;
+      font-size: 20px;
+    }
+  }
+
+  .message_btns {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    .message_btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #007AFE;
+      cursor: pointer;
+      &:hover{
+        //background-color: rgba(0, 122, 254, 0.5);
+        svg{
+          path{
+            fill: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
+}

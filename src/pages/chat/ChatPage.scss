@@ -1,0 +1,20 @@
+.chat-page{
+  height: 100%;
+  padding: 34px 0 76px 0;
+
+  &_title{
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 155%;
+  }
+  &_description{
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 155%;
+    margin-bottom: 27px;
+  }
+}
